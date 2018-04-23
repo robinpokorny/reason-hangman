@@ -2,6 +2,7 @@
   "name": "reason-hangman",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://robinpokorny.github.io/reason-hangman/",
   "dependencies": {
     "react": "16.3.2",
     "react-dom": "16.3.2",
@@ -12,7 +13,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "prepare": "npm link bs-platform"
+    "prepare": "npm link bs-platform",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "bs-jest": "0.3.2",
