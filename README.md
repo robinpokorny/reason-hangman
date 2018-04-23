@@ -1,5 +1,7 @@
 # Hangman in ReasonML ([DEMO](http://robinpokorny.github.io/reason-hangman/))
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/robinpokorny/reason-hangman.svg)](https://greenkeeper.io/)
+
 [![version](https://img.shields.io/badge/version-0.1.0-yellowgreen.svg?style=flat-square)]()
 [![Build Status](https://img.shields.io/badge/build-passed-brightgreen.svg?style=flat-square)](https://semaphoreci.com/robinpokorny/reason-hangman)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/robinpokorny/reason-hangman/blob/master/LICENSE)
