@@ -1,3 +1,22 @@
+# Hangman in ReasonML ([DEMO](http://robinpokorny.github.io/reason-hangman/))
+
+[![version](https://img.shields.io/badge/version-0.1.0-yellowgreen.svg?style=flat-square)]()
+[![Build Status](https://img.shields.io/badge/build-passed-brightgreen.svg?style=flat-square)](https://semaphoreci.com/robinpokorny/reason-hangman)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/robinpokorny/reason-hangman/blob/master/LICENSE)
+[![git3moji](https://img.shields.io/badge/git3moji-%E2%9A%A1%EF%B8%8F%F0%9F%90%9B%F0%9F%93%BA%F0%9F%91%AE%F0%9F%94%A4-fffad8.svg?style=flat-square)](https://robinpokorny.github.io/git3moji/)
+
+A simple hangman game in ReasonML and ReasonReact.
+
+## Watch me code this
+
+I livestreamed building this game. [See the recording](https://www.youtube.com/watch?v=1HW88evT2B8).
+
+[![Recording on YouTube](https://i.imgur.com/blj3DJL.png)](https://www.youtube.com/watch?v=1HW88evT2B8)
+
+**To get notified about the next stream, follow me on [Twitch](https://www.twitch.tv/robinpokorny)**
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
