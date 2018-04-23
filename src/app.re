@@ -1,21 +1,52 @@
 [%bs.raw {|require('./app.css')|}];
 
-[@bs.module] external logo : string = "./logo.svg";
+module CharSet = Set.Make(Char);
 
-let component = ReasonReact.statelessComponent("App");
+type state = {
+  word: string,
+  guesses: CharSet.t,
+};
 
-let make = (~message, _children) => {
+type action =
+  | Guess(char);
+
+let component = ReasonReact.reducerComponent("App");
+
+let make = _children => {
   ...component,
-  render: (_self) =>
+  initialState: () => {word: "REASONML", guesses: CharSet.empty},
+  reducer: (action, state) =>
+    switch (action) {
+    | Guess(letter) =>
+      ReasonReact.Update({
+        ...state,
+        guesses: CharSet.add(letter, state.guesses),
+      })
+    },
+  render: ({state, send}) => {
+    let charOrUnderscore = (c: char) =>
+      if (CharSet.exists(e => e == c, state.guesses)) {
+        c;
+      } else {
+        '_';
+      };
+    let hiddenWord = String.map(charOrUnderscore, state.word);
     <div className="App">
-      <div className="App-header">
-        <img src=logo className="App-logo" alt="logo" />
-        <h2> (ReasonReact.stringToElement(message)) </h2>
-      </div>
-      <p className="App-intro">
-        (ReasonReact.stringToElement("To get started, edit"))
-        <code> (ReasonReact.stringToElement(" src/app.re ")) </code>
-        (ReasonReact.stringToElement("and save to reload."))
-      </p>
-    </div>
+      <h2> (ReasonReact.stringToElement("Hangman")) </h2>
+      <h1> (ReasonReact.stringToElement(hiddenWord)) </h1>
+      <input
+        value=""
+        onKeyDown=(
+          event => {
+            let c = String.uppercase(ReactEventRe.Keyboard.key(event));
+            if (String.length(c) == 1) {
+              send(Guess(c.[0]));
+            } else {
+              ();
+            };
+          }
+        )
+      />
+    </div>;
+  },
 };
