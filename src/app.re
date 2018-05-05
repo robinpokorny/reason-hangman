@@ -2,13 +2,16 @@
 
 module CharSet = Set.Make(Char);
 
+let s = ReasonReact.stringToElement;
+
 type state = {
   word: string,
   guesses: CharSet.t,
 };
 
 type action =
-  | Guess(char);
+  | Guess(char)
+  | NewWord;
 
 type gameProgress =
   | Win
@@ -26,6 +29,11 @@ let make = _children => {
       ReasonReact.Update({
         ...state,
         guesses: CharSet.add(letter, state.guesses),
+      })
+    | NewWord => 
+      ReasonReact.Update({
+        word: "TWITCH", 
+        guesses: CharSet.empty
       })
     },
   render: ({state, send}) => {
@@ -54,12 +62,12 @@ let make = _children => {
         Guessing;
       };
     <div className="App">
-      <h2> (ReasonReact.stringToElement("Hangman")) </h2>
-      <h1> (ReasonReact.stringToElement(hiddenWord)) </h1>
+      <h2> (s("Hangman")) </h2>
+      <h1> (s(hiddenWord)) </h1>
       (
         switch (progress) {
-        | Lost => ReasonReact.stringToElement("You lost!")
-        | Win => ReasonReact.stringToElement("You WON!")
+        | Lost => <h3>(s("You lost!"))</h3>
+        | Win => <h3>(s("You WON!"))</h3>
         | Guessing =>
           <div>
             <input
@@ -85,6 +93,7 @@ let make = _children => {
           </div>
         }
       )
+      <button onClick=(_ => send(NewWord))> (s("New word")) </button>
     </div>;
   },
 };
